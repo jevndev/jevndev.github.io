@@ -8,16 +8,15 @@
 body {
     font-size: 3.9vh;
     line-height: 5vh;
-    background-image: linear-gradient(-30deg, var(--fern-green), var(--mountbatten-pink));
-    color: var(--ghost-white);
+    background-color: var(--ghost-white);
+    color: var(--gunmetal);
     font-family: 'League Spartan', sans-serif;
 }
 
 .name {
-    text-shadow: 0.4vh 0.4vh 0px var(--gunmetal);
-    font-size: 10vh;
+    font-size: 12vh;
     font-family: 'League Spartan', sans-serif;
-    color: var(--ghost-white);
+    color: var(--gunmetal);
     letter-spacing: 0.05em;
     transform: skewX(-5deg)
 }

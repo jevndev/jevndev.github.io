@@ -51,13 +51,13 @@ h4 {
 }
 
 .topbar {
-    border: 1px solid red;
     display: flex;
     align-items: center;
 }
 
 .headshot_container {
-    margin: 1vh;
+    margin: 2vh;
+    margin-left: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,8 +116,9 @@ a:hover.nav_link {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 1vh;
+    margin-right: 6vh;
     gap: 1vh;
+    flex-wrap: wrap;
     flex: 2;
 }
 

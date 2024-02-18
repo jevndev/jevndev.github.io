@@ -70,6 +70,7 @@ h4 {
     flex-direction: column;
     align-content: center;
     flex: 3;
+    margin-left: 1%;
 }
 
 ul {

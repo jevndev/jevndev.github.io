@@ -11,6 +11,13 @@
     --alt-green: #bacb9c;
 }
 
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+
 body {
     background-color: var(--ghost-white);
     color: var(--gunmetal);
@@ -18,9 +25,9 @@ body {
 }
 
 
-/* * {
+* {
     border: 1px solid black
-} */
+}
 
 h1 {
     margin: 0;
@@ -44,6 +51,7 @@ h4 {
 }
 
 .topbar {
+    border: 1px solid red;
     display: flex;
     align-items: center;
 }
@@ -108,7 +116,7 @@ a:hover.nav_link {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 2vh;
+    margin: 1vh;
     gap: 1vh;
     flex: 2;
 }
@@ -193,6 +201,10 @@ h3 a:hover {
     padding-right: 1vh;
     padding-top: 0.5vh;
     padding-bottom: 0.5vh;
+}
+
+.page_break {
+    width: 95%;
 }
 
 

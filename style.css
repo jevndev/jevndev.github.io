@@ -227,3 +227,10 @@ h3 a:hover {
     display: flex;
     gap: 10px;
 }
+
+
+.WIP {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}

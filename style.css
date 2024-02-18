@@ -6,26 +6,7 @@
 }
 
 body {
-    font-size: 3.9vh;
-    line-height: 5vh;
     background-color: var(--ghost-white);
     color: var(--gunmetal);
     font-family: 'League Spartan', sans-serif;
-}
-
-.name {
-    font-size: 12vh;
-    font-family: 'League Spartan', sans-serif;
-    color: var(--gunmetal);
-    letter-spacing: 0.05em;
-    transform: skewX(-5deg)
-}
-
-.placard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin: auto;
-    width: 80%;
 }

@@ -147,6 +147,7 @@ a:hover.link {
     display: flex;
     flex-direction: column;
     gap: 3vh;
+    width: 100%;
 }
 
 .post {

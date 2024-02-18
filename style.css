@@ -25,9 +25,9 @@ body {
 }
 
 
-* {
+/* * {
     border: 1px solid black
-}
+} */
 
 h1 {
     margin: 0;
@@ -98,12 +98,12 @@ ul {
     color: var(--gunmetal-light);
 }
 
-a:link.nav_link {
+a:link.link {
     color: var(--gunmetal);
     text-decoration: none;
 }
 
-a:hover.nav_link {
+a:hover.link {
     color: var(--fern-green);
     text-decoration: none;
 }
@@ -213,5 +213,16 @@ h3 a:hover {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 3rem;
+}
+
+.footer_bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer_links {
+    display: flex;
+    gap: 10px;
 }

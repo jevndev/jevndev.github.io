@@ -110,6 +110,10 @@ a:hover.link {
     text-decoration: none;
 }
 
+a:visited.link {
+    color: var(--gunmetal)
+}
+
 .nav_link {
     font-size: large;
 }

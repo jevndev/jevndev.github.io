@@ -21,7 +21,10 @@ html {
 
 
 body {
+    display: flex;
+    flex-direction: column;
     background-color: var(--ghost-white);
+    height: 100%;
     color: var(--gunmetal);
     font-family: 'League Spartan', sans-serif;
 }
@@ -211,10 +214,7 @@ h3 a:hover {
     width: 95%;
 }
 
-
 #footer {
-    position: absolute;
-    bottom: 0;
     padding-bottom: 1%;
     width: 100%;
 }
@@ -273,4 +273,12 @@ h3 a:hover {
 
 .text_block>* {
     line-height: 2.0;
+}
+
+
+#page_content {
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    display: flex;
 }

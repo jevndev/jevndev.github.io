@@ -9,6 +9,8 @@
     --silver: #d0d0d0;
     --light-pink: #ccc2d0;
     --alt-green: #bacb9c;
+    --printables-orange: #fd7e14;
+    --github-navy: #24292f;
 }
 
 body,
@@ -213,8 +215,8 @@ h3 a:hover {
 #footer {
     position: absolute;
     bottom: 0;
+    padding-bottom: 1%;
     width: 100%;
-    height: 3rem;
 }
 
 .footer_bar {
@@ -228,9 +230,30 @@ h3 a:hover {
     gap: 10px;
 }
 
+.footer_link {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
 
 .WIP {
     display: flex;
     justify-content: center;
     height: 100%;
+}
+
+#footer_link_icon_github:hover {
+    fill: var(--github-navy);
+}
+
+
+#footer_link_icon_printables:hover {
+    fill: var(--printables-orange);
+}
+
+.footer_link_icon {
+    display: block;
+    width: 30;
+    height: 30;
+
 }

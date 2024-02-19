@@ -79,7 +79,7 @@ h4 {
     margin-left: 1%;
 }
 
-ul {
+ul.posts {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -256,4 +256,21 @@ h3 a:hover {
     width: 30;
     height: 30;
 
+}
+
+#about_block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+#about_section {
+    width: 80%;
+}
+
+.text_block>* {
+    line-height: 2.0;
 }

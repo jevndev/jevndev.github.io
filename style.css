@@ -269,6 +269,7 @@ h3 a:hover {
 
 #about_section {
     width: 80%;
+    font-size: larger;
 }
 
 .text_block>* {

@@ -114,7 +114,7 @@ a:visited.link {
 }
 
 .nav_link {
-    font-size: large;
+    font-size: larger;
 }
 
 .navigation {
@@ -122,7 +122,7 @@ a:visited.link {
     justify-content: flex-end;
     align-items: center;
     margin-right: 6vh;
-    gap: 1vh;
+    gap: 2vh;
     flex-wrap: wrap;
     flex: 2;
 }

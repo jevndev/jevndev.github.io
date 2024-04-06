@@ -8,6 +8,8 @@ import itertools
 import yaml
 import io
 import rich.progress
+import markdown
+import shutil
 from dateutil import parser
 
 BLOG_POST_DATA_FOLDER = pathlib.Path("./blog_posts")
@@ -119,13 +121,67 @@ def get_blog_posts(
     return blog_posts
 
 
+HTMLstr = typing.NewType("HTMLstr", str)
+
+
+@dataclasses.dataclass(frozen=True)
 class BlogPostPage:
     source_data: BlogPost
+    html: HTMLstr
+    page_path: pathlib.Path
+
+    @staticmethod
+    def _make_html(blog_post: BlogPost) -> HTMLstr:
+        return HTMLstr(markdown.markdown("".join(blog_post.body)))
+
+    @staticmethod
+    def _get_path(blog_post: BlogPost) -> pathlib.Path:
+        return (
+            pathlib.Path(str(blog_post.metadata.publish_date.year))
+            / str(blog_post.metadata.publish_date.month)
+            / str(blog_post.metadata.publish_date.day)
+            / blog_post.post_title.replace(" ", "_")
+        ).with_suffix(".html")
+
+    @staticmethod
+    def from_blog_post(
+        blog_post: BlogPost, blog_post_root_folder: pathlib.Path
+    ) -> BlogPostPage:
+        return BlogPostPage(
+            blog_post,
+            BlogPostPage._make_html(blog_post),
+            blog_post_root_folder / BlogPostPage._get_path(blog_post),
+        )
+
+    def _ensure_path_exists(self):
+        for path in reversed(self.page_path.parents):
+            path.mkdir(exist_ok=True)
+
+    def write_file(self):
+        self._ensure_path_exists()
+        with open(self.page_path, "w") as f:
+            f.write(self.html)
 
 
 def generate_blog_post_pages(
-    blog_post_data: typing.Sequence[BlogPost], blog_post_root_folder: pathlib.Path
-) -> typing.Sequence[BlogPostPage]: ...
+    blog_posts: typing.Sequence[BlogPost], blog_post_root_folder: pathlib.Path
+) -> typing.Sequence[BlogPostPage]:
+    pages: typing.List[BlogPostPage] = []
+
+    reset_blog_pages(blog_post_root_folder)
+
+    for blog_post in blog_posts:
+        page = BlogPostPage.from_blog_post(blog_post, blog_post_root_folder)
+        page.write_file()
+        pages.append(page)
+
+    return pages
+
+
+def reset_blog_pages(blog_post_root_folder: pathlib.Path):
+    assert blog_post_root_folder.exists() and blog_post_root_folder.is_dir()
+    shutil.rmtree(blog_post_root_folder)
+    blog_post_root_folder.mkdir()
 
 
 def update_blog_homepage(pages: typing.Sequence[BlogPostPage]): ...
@@ -137,6 +193,7 @@ def update_rss(pages: typing.Sequence[BlogPostPage]): ...
 def main():
     blog_posts = get_blog_posts(BLOG_POST_DATA_FOLDER)
     blog_post_pages = generate_blog_post_pages(blog_posts, BLOG_POST_PAGE_FOLDER)
+
     update_blog_homepage(blog_post_pages)
     update_rss(blog_post_pages)
 

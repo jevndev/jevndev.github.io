@@ -11,9 +11,15 @@ import rich.progress
 import markdown
 import shutil
 from dateutil import parser
+from bs4 import BeautifulSoup, Tag
+
+import bs4
 
 BLOG_POST_DATA_FOLDER = pathlib.Path("./blog_posts")
 BLOG_POST_PAGE_FOLDER = pathlib.Path("./blog")
+BLOG_LIST_PAGE = pathlib.Path("./index.html")
+
+POST_LIST_ID = "post_list"
 
 POST_HEADER_DELIMITER = "---\n"
 
@@ -162,6 +168,39 @@ class BlogPostPage:
         with open(self.page_path, "w") as f:
             f.write(self.html)
 
+    def make_bs4_card_tag(
+        self,
+    ) -> Tag:
+        post_entry = BeautifulSoup(
+            f"""
+<li class="post">
+    <div class="post_title_bar">
+        <h3 class="post_title">
+            <a href="{self.page_path}">
+                {self.source_data.post_title}
+            </a>
+        </h3>
+        <div class="date">
+            {self.source_data.metadata.publish_date.strftime("%Y/%m/%d")}
+        </div>
+    </div>
+    <p class="blurb">{"Hello"}</p>
+</li>""",
+            "html.parser",
+        )
+
+        post_tags_div = post_entry.new_tag("div", attrs={"class": "tags"})
+
+        for tag in self.source_data.metadata.tags:
+            post_tags_div.append(
+                BeautifulSoup(f"""<div class="tag">{tag}</div>""", "html.parser")
+            )
+
+        assert post_entry.li is not None
+
+        post_entry.li.insert(-1, post_tags_div)
+        return post_entry
+
 
 def generate_blog_post_pages(
     blog_posts: typing.Sequence[BlogPost], blog_post_root_folder: pathlib.Path
@@ -170,7 +209,9 @@ def generate_blog_post_pages(
 
     reset_blog_pages(blog_post_root_folder)
 
-    for blog_post in blog_posts:
+    for blog_post in rich.progress.track(
+        blog_posts, "Generating posts", show_speed=True
+    ):
         page = BlogPostPage.from_blog_post(blog_post, blog_post_root_folder)
         page.write_file()
         pages.append(page)
@@ -184,7 +225,34 @@ def reset_blog_pages(blog_post_root_folder: pathlib.Path):
     blog_post_root_folder.mkdir()
 
 
-def update_blog_homepage(pages: typing.Sequence[BlogPostPage]): ...
+def add_post_break(post_list_element: Tag):
+    post_list_element.append(
+        BeautifulSoup("""<hr class="post_break" />""", "html.parser")
+    )
+
+
+def update_blog_homepage(
+    pages: typing.Sequence[BlogPostPage], blog_list_homepage_path: pathlib.Path
+):
+    with open(blog_list_homepage_path, "r") as f:
+        blog_list_page_html = BeautifulSoup(f, "html.parser")
+        overwrite_list_page_html(pages, blog_list_page_html)
+
+    with open(blog_list_homepage_path, "w") as f:
+        f.write(blog_list_page_html.prettify())
+
+
+def overwrite_list_page_html(
+    pages: typing.Sequence[BlogPostPage], blog_list_page_html: BeautifulSoup
+):
+    post_list_element = blog_list_page_html.find(attrs={"id": POST_LIST_ID})
+    assert isinstance(post_list_element, Tag)
+
+    post_list_element.clear()
+    add_post_break(post_list_element)
+    for page in pages:
+        post_list_element.append(page.make_bs4_card_tag())
+        add_post_break(post_list_element)
 
 
 def update_rss(pages: typing.Sequence[BlogPostPage]): ...
@@ -194,7 +262,7 @@ def main():
     blog_posts = get_blog_posts(BLOG_POST_DATA_FOLDER)
     blog_post_pages = generate_blog_post_pages(blog_posts, BLOG_POST_PAGE_FOLDER)
 
-    update_blog_homepage(blog_post_pages)
+    update_blog_homepage(blog_post_pages, BLOG_LIST_PAGE)
     update_rss(blog_post_pages)
 
 

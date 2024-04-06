@@ -10,13 +10,15 @@ import io
 import rich.progress
 from dateutil import parser
 
-BLOG_POST_FOLDER = pathlib.Path("./blog_posts")
+BLOG_POST_DATA_FOLDER = pathlib.Path("./blog_posts")
+BLOG_POST_PAGE_FOLDER = pathlib.Path("./blog")
 
 POST_HEADER_DELIMITER = "---\n"
 
 TAG_KEY = "tags"
 PUBLISH_DATE_KEY = "publish date"
 EXPECTED_KEYS = (TAG_KEY, PUBLISH_DATE_KEY)
+
 
 PostTitle = typing.NewType("PostTitle", str)
 PostBody = typing.NewType("PostBody", str)
@@ -117,8 +119,26 @@ def get_blog_posts(
     return blog_posts
 
 
+class BlogPostPage:
+    source_data: BlogPost
+
+
+def generate_blog_post_pages(
+    blog_post_data: typing.Sequence[BlogPost], blog_post_root_folder: pathlib.Path
+) -> typing.Sequence[BlogPostPage]: ...
+
+
+def update_blog_homepage(pages: typing.Sequence[BlogPostPage]): ...
+
+
+def update_rss(pages: typing.Sequence[BlogPostPage]): ...
+
+
 def main():
-    blog_posts = get_blog_posts(BLOG_POST_FOLDER)
+    blog_posts = get_blog_posts(BLOG_POST_DATA_FOLDER)
+    blog_post_pages = generate_blog_post_pages(blog_posts, BLOG_POST_PAGE_FOLDER)
+    update_blog_homepage(blog_post_pages)
+    update_rss(blog_post_pages)
 
 
 if __name__ == "__main__":

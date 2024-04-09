@@ -30,6 +30,7 @@ PUBLISH_DATE_KEY = "publish date"
 REQUIRED_KEYS = (TAG_KEY, PUBLISH_DATE_KEY)
 
 POST_TITLE_ID = HTMLID("post_title")
+POST_SUBTITLE_ID = HTMLID("post_subtitle")
 
 POST_CONTENT_ID = HTMLID("post_content")
 
@@ -177,7 +178,7 @@ class BlogPostPage:
 
         if blog_post.metadata.subtitle is not None:
             BlogPostPage._set_post_subtitle(
-                template_html, blog_post.metadata.subtitle, POST_TITLE_ID
+                template_html, blog_post.metadata.subtitle, POST_SUBTITLE_ID
             )
 
         blog_post_content = HTMLstr(markdown.markdown("".join(blog_post.body)))

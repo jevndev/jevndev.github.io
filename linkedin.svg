@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewbox="0 0 100 100"
+   version="1.1"
+   id="linkedin_svg"
+   sodipodi:docname="linkedin.svg"
+   inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="powerclip"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false"
+       message="Use fill-rule evenodd on &lt;b&gt;fill and stroke&lt;/b&gt; dialog if no flatten result after convert clip to paths." />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1">
+      <path
+         d="m 25.489658,25.677411 h -4.315412 v -7.350113 c 0,-2.0152 -0.765726,-3.141361 -2.360759,-3.141361 -1.73519,0 -2.641755,1.171945 -2.641755,3.141361 v 7.350113 H 12.012884 V 11.675569 h 4.158848 v 1.886045 c 0,0 1.250458,-2.313823 4.221748,-2.313823 2.969921,0 5.096178,1.813612 5.096178,5.564519 z M 7.051393,9.8421401 c -1.416593,0 -2.5644989,-1.1569117 -2.5644989,-2.5837462 0,-1.4268355 1.1479059,-2.5837475 2.5644989,-2.5837475 1.4165912,0 2.5638133,1.156912 2.5638133,2.5837475 0,1.4268345 -1.1472221,2.5837462 -2.5638133,2.5837462 z M 4.9039411,25.677411 H 9.2405475 V 11.675569 H 4.9039411 Z"
+         fill="#ffffff"
+         id="path1"
+         style="display:none;stroke-width:0.4039" />
+      <path
+         id="lpe_path-effect1"
+         style="stroke-width:0.4039"
+         class="powerclip"
+         d="M -4.5520983,-4.3643457 H 34.528651 V 34.716404 H -4.5520983 Z M 25.489658,25.677411 V 16.81231 c 0,-3.750907 -2.126257,-5.564519 -5.096178,-5.564519 -2.97129,0 -4.221748,2.313823 -4.221748,2.313823 v -1.886045 h -4.158848 v 14.001842 h 4.158848 v -7.350113 c 0,-1.969416 0.906565,-3.141361 2.641755,-3.141361 1.595033,0 2.360759,1.126161 2.360759,3.141361 v 7.350113 z M 7.051393,9.8421401 c 1.4165912,0 2.5638133,-1.1569117 2.5638133,-2.5837462 0,-1.4268355 -1.1472221,-2.5837475 -2.5638133,-2.5837475 -1.416593,0 -2.5644989,1.156912 -2.5644989,2.5837475 0,1.4268345 1.1479059,2.5837462 2.5644989,2.5837462 z M 4.9039411,25.677411 H 9.2405475 V 11.675569 H 4.9039411 Z" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="11.101458"
+     inkscape:cx="10.809391"
+     inkscape:cy="22.789799"
+     inkscape:window-width="1440"
+     inkscape:window-height="896"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="linkedin_svg"
+     showgrid="false" />
+  <path
+     d="M 3.6790957,29.716404 H 26.297457 c 1.784539,0 3.231194,-1.446655 3.231194,-3.231194 V 3.8668482 c 0,-1.7845397 -1.446655,-3.23119395 -3.231194,-3.23119395 H 3.6790957 c -1.7845395,0 -3.23119398,1.44665425 -3.23119398,3.23119395 V 26.48521 c 0,1.784539 1.44665448,3.231194 3.23119398,3.231194 z"
+     id="path1-9"
+     style="stroke-width:0.4039"
+     clip-path="url(#clipPath1)"
+     inkscape:path-effect="#path-effect1"
+     inkscape:original-d="M 3.6790957,29.716404 H 26.297457 c 1.784539,0 3.231194,-1.446655 3.231194,-3.231194 V 3.8668482 c 0,-1.7845397 -1.446655,-3.23119395 -3.231194,-3.23119395 H 3.6790957 c -1.7845395,0 -3.23119398,1.44665425 -3.23119398,3.23119395 V 26.48521 c 0,1.784539 1.44665448,3.231194 3.23119398,3.231194 z"
+     transform="matrix(1.0555134,0,0,1.0555134,-0.13215558,2.4434047)" />
+</svg>

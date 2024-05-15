@@ -11,6 +11,7 @@
     --alt-green: #bacb9c;
     --printables-orange: #fd7e14;
     --github-navy: #24292f;
+    --linkedin-blue: #007EBB;
 }
 
 body,
@@ -257,7 +258,7 @@ h3 a:hover {
 
 .footer_links {
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .footer_link {
@@ -276,16 +277,28 @@ h3 a:hover {
     fill: var(--github-navy);
 }
 
+#footer_link_icon_linkedin:hover {
+    fill: var(--linkedin-blue);
+}
 
 #footer_link_icon_printables:hover {
     fill: var(--printables-orange);
+}
+
+#footer_link_icon_printables {
+    width: 25;
+}
+
+
+#footer_link_icon_linkedin {
+    width: 35;
+    height: 35;
 }
 
 .footer_link_icon {
     display: block;
     width: 30;
     height: 30;
-
 }
 
 #about_block {

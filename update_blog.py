@@ -18,7 +18,7 @@ HTMLID = typing.NewType("HTMLID", str)
 
 BLOG_POST_DATA_FOLDER = pathlib.Path("./blog_posts")
 BLOG_POST_PAGE_FOLDER = pathlib.Path("./blog")
-BLOG_LIST_PAGE = pathlib.Path("./index.html")
+BLOG_LIST_PAGE = pathlib.Path("./blog.html")
 BLOG_POST_TEMPLATE_PAGE = pathlib.Path("blog_post_template.html")
 
 POST_LIST_ID = HTMLID("post_list")

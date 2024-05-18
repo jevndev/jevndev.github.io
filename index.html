@@ -1,91 +1,79 @@
 <html>
 
 <head>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&amp;display=swap"
-        rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
-    <title>
-        Jonathan Evans
-    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Jonathan Evans</title>
 </head>
 
 <body>
     <div class="topbar">
         <div class="headshot_container">
-            <img alt="A headshot of Jonathan Evans" class="headshot" src="headshot.jpg" />
+            <img src="headshot.jpg" alt="A headshot of Jonathan Evans" class="headshot">
         </div>
+
         <div class="title_container">
-            <h1 class="page_title">
-                Jonathan Evans
-            </h1>
-            <h2 class="subtitle">
-                Blog
-            </h2>
+            <h1 class="page_title">Jonathan Evans</h1>
+            <h2 class="subtitle">About</h2>
         </div>
+
+
         <nav class="navigation">
-            <a class="nav_link link" href="about.html">
-                About
-            </a>
-            <a class="nav_link link" href="#footer">
-                Links
-            </a>
-            <a class="nav_link link" href="mailto:jonathanevansdev@gmail.com">
-                Contact
-            </a>
-            <a class="nav_link link" href="#posts">
-                Blog
-            </a>
+            <a href="index.html" class="nav_link link">About</a>
+            <a href="#footer" class="nav_link link">Links</a>
+            <a href="mailto:jonathanevansdev@gmail.com" class="nav_link link">Contact</a>
+            <a href="blog.html" class="nav_link link">Blog</a>
         </nav>
+
     </div>
     <hr class="page_break" />
+
     <div id="page_content">
-        <div class="post_body">
-            <div class="post_column">
-                <ul class="posts" id="post_list">
-                    <hr class="post_break" />
-                    <li class="post">
-                        <div class="post_title_bar">
-                            <h3 class="post_title">
-                                <a href="blog/2024/4/7/The_Second_Try.html">
-                                    The Second Try
-                                </a>
-                            </h3>
-                            <div class="date">
-                                2024/04/07
-                            </div>
-                        </div>
-                        <p class="blurb">
-                            Get results before you get clean results
-                        </p>
-                        <div class="tags">
-                            <div class="tag">
-                                design philosophy
-                            </div>
-                            <div class="tag">
-                                maker
-                            </div>
-                        </div>
-                    </li>
-                    <hr class="post_break" />
+        <div id="about_block">
+            <div id="about_section" class="text_block">
+                <h3>Hello!</h3>
+
+                <p> My name is Jonathan Evans. I am a software developer/computer scientist with an unmaintainable
+                    number of
+                    interests
+                    and no time to embrace them.</p>
+
+                <h4>Interest Areas</h4>
+
+                <ul>
+                    <li>Perception technologies (object detection/tracking/state estmation)</li>
+                    <li>Autonomous Robots (motion planning/path planning)</li>
+                    <li>High performance numerical computing</li>
+                    <li>Machine Learning</li>
+                    <li>Recreational Mathematics</li>
+                    <li>3D printing</li>
+                    <li>Embedded development</li>
+                </ul>
+
+                <h4>Experience</h4>
+
+                <ul>
+                    <li>B.S. in Computer Science, Missouri University of Science and Technology</li>
+                    <li>B.S. in Computer Engineering, Missouri University of Science and Technology</li>
+                    <li>3 Years (As of May 2024) developing autopilots for commercial marine applications.</li>
                 </ul>
             </div>
         </div>
+
         <footer id="footer">
             <hr class="page_break" />
             <div class="footer_bar">
                 <div class="footer_links">
-                    <a class="footer_link link" href="https://www.printables.com/@jevndev_1637559">
-                        <svg class="footer_link_icon" id="footer_link_icon_printables">
-                            <use xlink:href="printables.svg#printables_svg">
-                            </use>
+                    <a href="https://www.printables.com/@jevndev_1637559" class="footer_link link">
+                        <svg id="footer_link_icon_printables" class="footer_link_icon">
+                            <use xlink:href="printables.svg#printables_svg" />
                         </svg>
                     </a>
-                    <a class="footer_link link" href="https://github.com/jevndev">
-                        <svg class="footer_link_icon" id="footer_link_icon_github">
-                            <use xlink:href="github.svg#github_svg">
-                            </use>
+                    <a href="https://github.com/jevndev" class="footer_link link">
+                        <svg id="footer_link_icon_github" class="footer_link_icon">
+                            <use xlink:href="github.svg#github_svg" />
                         </svg>
                     </a>
                     <a href="https://www.linkedin.com/in/jevndev/" class="footer_link link">

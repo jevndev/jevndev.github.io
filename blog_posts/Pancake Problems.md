@@ -26,7 +26,7 @@ where
 
 $$
 f_{k,n}(s_i) = \begin{cases}
-s_i& i<k\\
+s_i& i<k\\\
 s_{n-i+k}& i\geq k
 \end{cases}
 $$
@@ -71,14 +71,14 @@ This is actually fairly trivial to prove just from the definition of $F_k$. Note
 $$(F_k \circ F_k)(S_n) = \{f_{k,n}(f_{k,n}(s_i)):\  \forall s_i \in S_n\}$$
 
 $$f_{k,n}(f_{k,n}(s_i))=\begin{cases}
-s_i& i<k \\
+s_i& i<k \\\
 s_{n-(n-i+k)+k} & i\geq k
 \end{cases} $$
 
 i.e.
 
 $$f_{k,n}(f_{k,n}(s_i))=\begin{cases}
-s_i& i<k \\
+s_i& i<k \\\
 s_{i} & i\geq k
 \end{cases} = s_i $$ 
 What's neat about this conclusion is that it illuminates a bit about what the solution sequence looks like. The solution sequence cannot have any two subsequent flips of the same $k$, because they would simply collapse to the identity function.

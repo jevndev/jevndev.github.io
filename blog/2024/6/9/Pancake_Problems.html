@@ -8,9 +8,14 @@
       <link href="../../../../style.css" rel="stylesheet" />
       <link href="../../../../blog_styles.css" rel="stylesheet" />
       <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+   MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
   </script>
-      <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+      <script charset="utf-8" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
             type="text/javascript">
             </script>
       <title>
@@ -145,7 +150,7 @@
                               <p>
                                     $$
                                     f_{k,n}(s_i) = \begin{cases}
-                                    s_i&amp; i&lt;k\
+                                    s_i&amp; i&lt;k\\
                                     s_{n-i+k}&amp; i\geq k
                                     \end{cases}
                                     $$
@@ -232,7 +237,7 @@
                               </p>
                               <p>
                                     $$f_{k,n}(f_{k,n}(s_i))=\begin{cases}
-                                    s_i&amp; i&lt;k \
+                                    s_i&amp; i&lt;k \\
                                     s_{n-(n-i+k)+k} &amp; i\geq k
                                     \end{cases} $$
                               </p>
@@ -241,7 +246,7 @@
                               </p>
                               <p>
                                     $$f_{k,n}(f_{k,n}(s_i))=\begin{cases}
-                                    s_i&amp; i&lt;k \
+                                    s_i&amp; i&lt;k \\
                                     s_{i} &amp; i\geq k
                                     \end{cases} = s_i $$
                                     What's neat about this conclusion is that it illuminates a bit about what the

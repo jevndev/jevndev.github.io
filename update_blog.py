@@ -427,7 +427,7 @@ def update_rss(pages: typing.Sequence[BlogPostPage]):
             page,
         )
 
-    with open("rss.xml", "w") as f:
+    with open(BLOG_POST_PAGE_FOLDER / "rss.xml", "w") as f:
         print(xml.etree.ElementTree.tostring(feed._feed).decode(), file=f)
 
 

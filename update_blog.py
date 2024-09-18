@@ -1,18 +1,20 @@
 from __future__ import annotations
 
 import dataclasses
-import typing
 import datetime
-import pathlib
-import itertools
-import yaml
 import io
-import rich.progress
-import markdown
+import uuid
+import itertools
+import pathlib
 import shutil
-from dateutil import parser
-from bs4 import BeautifulSoup, Tag
+import typing
+import xml.etree.ElementTree
 
+import markdown
+import rich.progress
+import yaml
+from bs4 import BeautifulSoup, Tag
+from dateutil import parser
 
 HTMLID = typing.NewType("HTMLID", str)
 
@@ -35,6 +37,11 @@ POST_SUBTITLE_ID = HTMLID("post_subtitle")
 POST_CONTENT_ID = HTMLID("post_content")
 
 SUBTITLE_KEY = "subtitle"
+
+BLOG_TITLE = "Jonathan Evans Blog"
+HOMEPAGE = "https://www.jonathanevans.dev/"
+BLOG_LINK = HOMEPAGE + str(BLOG_LIST_PAGE)
+BLOG_DESCRIPTION = "A blog about programming, math and other fascinations"
 
 PostTitle = typing.NewType("PostTitle", str)
 PostSubtitle = typing.NewType("PostSubtitle", str)
@@ -73,6 +80,9 @@ class PostMetadata:
             subtitle = None
 
         return PostMetadata(tags, publish_date, subtitle)
+
+    def subtitle_or(self, /, default="") -> str:
+        return self.subtitle if self.subtitle is not None else default
 
 
 def _is_header_delimiter(text: str) -> bool:
@@ -206,7 +216,6 @@ class BlogPostPage:
         blog_post_root_folder: pathlib.Path,
         template_page_path: pathlib.Path,
     ) -> BlogPostPage:
-
         with open(template_page_path, "r") as f:
             template_page = BeautifulSoup(f, "html.parser")
 
@@ -257,6 +266,14 @@ class BlogPostPage:
 
         post_entry.li.insert(-1, post_tags_div)
         return post_entry
+
+    @property
+    def uuid(self):
+        return uuid.uuid5(uuid.NAMESPACE_URL, str(self.page_path))
+
+
+def get_blog_post_url_relative_to(post: BlogPostPage, root: str) -> str:
+    return root + str(post.page_path)
 
 
 def generate_blog_post_pages(
@@ -318,7 +335,100 @@ def overwrite_list_page_html(
         add_post_break(post_list_element)
 
 
-def update_rss(pages: typing.Sequence[BlogPostPage]): ...
+class RSSFeed:
+    def __init__(self, title: str, link: str, description: str):
+        self._channel = self._make_channel(title, link, description)
+        self._feed = self._make_feed(self._channel)
+
+    def _make_feed(
+        self, channel: xml.etree.ElementTree.Element
+    ) -> xml.etree.ElementTree.Element:
+        feed = xml.etree.ElementTree.Element("rss")
+        feed.set("version", "2.0")
+        feed.set("xmlns:atom", "http://www.w3.org/2005/Atom")
+        feed.append(channel)
+
+        return feed
+
+    def _make_channel(
+        self, title: str, link: str, description: str
+    ) -> xml.etree.ElementTree.Element:
+        channel = xml.etree.ElementTree.Element("channel")
+
+        title_element = xml.etree.ElementTree.Element("title")
+        title_element.text = title
+        channel.append(title_element)
+
+        link_element = xml.etree.ElementTree.Element("link")
+        link_element.text = link
+        channel.append(link_element)
+
+        description_element = xml.etree.ElementTree.Element("description")
+        description_element.text = description
+        channel.append(description_element)
+
+        atom_link = xml.etree.ElementTree.Element("atom:link")
+        atom_link.set("href", BLOG_LINK)
+        atom_link.set("rel", "self")
+        atom_link.set("type", "application/rss+xml")
+        channel.append(atom_link)
+
+        return channel
+
+    def add_item(
+        self,
+        title: str,
+        link: str,
+        description: str,
+        pub_date: datetime.datetime,
+        uuid: uuid.UUID,
+    ):
+        item = xml.etree.ElementTree.Element("item")
+
+        title_element = xml.etree.ElementTree.Element("title")
+        title_element.text = title
+        item.append(title_element)
+
+        link_element = xml.etree.ElementTree.Element("link")
+        link_element.text = link
+        item.append(link_element)
+
+        description_element = xml.etree.ElementTree.Element("description")
+        description_element.text = description
+        item.append(description_element)
+
+        guid_element = xml.etree.ElementTree.Element("guid")
+        guid_element.set("isPermaLink", "false")
+        guid_element.text = str(uuid)
+        item.append(guid_element)
+
+        pub_date_element = xml.etree.ElementTree.Element("pubDate")
+
+        # Wed, 02 Oct 2002 08:00:00 EST
+        pub_date_element.text = pub_date.strftime("%a, %d %b %Y %H:%M:%S CST")
+        item.append(pub_date_element)
+
+        self._channel.append(item)
+
+    def add_blog_post(self, blog_post: BlogPostPage):
+        self.add_item(
+            blog_post.source_data.post_title,
+            get_blog_post_url_relative_to(blog_post, HOMEPAGE),
+            blog_post.source_data.metadata.subtitle_or(""),
+            blog_post.source_data.metadata.publish_date,
+            blog_post.uuid,
+        )
+
+
+def update_rss(pages: typing.Sequence[BlogPostPage]):
+    feed = RSSFeed(BLOG_TITLE, BLOG_LINK, BLOG_DESCRIPTION)
+    for page in pages:
+        feed.add_blog_post(
+            page,
+        )
+
+    with open("rss.xml", "w") as f:
+        print(xml.etree.ElementTree.tostring(feed._feed).decode(), file=f)
 
 
 def main():

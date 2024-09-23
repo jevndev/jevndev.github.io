@@ -208,7 +208,7 @@ class BlogPostPage:
             / str(blog_post.metadata.publish_date.month)
             / str(blog_post.metadata.publish_date.day)
             / blog_post.post_title.replace(" ", "_")
-        )
+        ).with_suffix(".html")
 
     @staticmethod
     def from_blog_post(

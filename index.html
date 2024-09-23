@@ -1,98 +1,147 @@
 <html>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<title>Jonathan Evans</title>
+	</head>
 
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Jonathan Evans</title>
-</head>
+	<body>
+		<div class="topbar">
+			<div class="headshot_container">
+				<img
+					src="headshot.jpg"
+					alt="A headshot of Jonathan Evans"
+					class="headshot"
+				/>
+			</div>
 
-<body>
-    <div class="topbar">
-        <div class="headshot_container">
-            <img src="headshot.jpg" alt="A headshot of Jonathan Evans" class="headshot">
-        </div>
+			<div class="title_container">
+				<h1 class="page_title">Jonathan Evans</h1>
+				<h2 class="subtitle">About</h2>
+			</div>
 
-        <div class="title_container">
-            <h1 class="page_title">Jonathan Evans</h1>
-            <h2 class="subtitle">About</h2>
-        </div>
+			<nav class="navigation">
+				<a href="index.html" class="nav_link link">About</a>
+				<a href="#footer" class="nav_link link">Links</a>
+				<a href="contact.html" class="nav_link link">Contact</a>
+				<a href="blog.html" class="nav_link link">Blog</a>
+			</nav>
+		</div>
+		<hr class="page_break" />
 
+		<div id="page_content">
+			<div id="about_block">
+				<div id="about_section" class="text_block">
+					<h3>Hello!</h3>
 
-        <nav class="navigation">
-            <a href="index.html" class="nav_link link">About</a>
-            <a href="#footer" class="nav_link link">Links</a>
-            <a href="contact.html" class="nav_link link">Contact</a>
-            <a href="blog.html" class="nav_link link">Blog</a>
-        </nav>
+					<p>
+						My name is Jonathan Evans. I am a software
+						developer/computer scientist with an unmaintainable
+						number of interests and no time to embrace them.
+					</p>
 
-    </div>
-    <hr class="page_break" />
+					<h4>Interest Areas</h4>
 
-    <div id="page_content">
-        <div id="about_block">
-            <div id="about_section" class="text_block">
-                <h3>Hello!</h3>
+					<ul>
+						<li>
+							Perception technologies (object
+							detection/tracking/state estmation)
+						</li>
+						<li>
+							Autonomous Robots (motion planning/path planning)
+						</li>
+						<li>High performance numerical computing</li>
+						<li>Statistical Modeling</li>
+						<li>Modern C++ (C++17, C++20, C++23)</li>
+						<li>Machine Learning</li>
+						<li>Recreational Mathematics</li>
+						<li>3D printing</li>
+						<li>Embedded development</li>
+					</ul>
 
-                <p> My name is Jonathan Evans. I am a software developer/computer scientist with an unmaintainable
-                    number of
-                    interests
-                    and no time to embrace them.</p>
+					<h4>Experience</h4>
 
-                <h4>Interest Areas</h4>
+					<ul>
+						<li>
+							B.S. in Computer Science, Missouri University of
+							Science and Technology
+						</li>
+						<li>
+							B.S. in Computer Engineering, Missouri University of
+							Science and Technology
+						</li>
+						<li>
+							Undergraduate research assisting in the creation of
+							novel transformer technologies
+						</li>
+						<li>
+							A Summer internship architecting systems to improve
+							user-product interactions
+						</li>
+						<li>
+							3 Years (As of May 2024) developing autopilots for
+							commercial marine applications.
+						</li>
+					</ul>
 
-                <ul>
-                    <li>Perception technologies (object detection/tracking/state estmation)</li>
-                    <li>Autonomous Robots (motion planning/path planning)</li>
-                    <li>High performance numerical computing</li>
-                    <li>Statistical Modeling</li>
-                    <li>Modern C++ (C++17, C++20, C++23)</li>
-                    <li>Machine Learning</li>
-                    <li>Recreational Mathematics</li>
-                    <li>3D printing</li>
-                    <li>Embedded development</li>
-                </ul>
+					<p>
+						<em
+							>This website is currently under development! What
+							you see here is what I was able to throw together in
+							a weekend or so. Hopefully I get a chance to clean
+							it up soon.</em
+						>
+					</p>
+				</div>
+			</div>
 
-                <h4>Experience</h4>
-
-                <ul>
-                    <li>B.S. in Computer Science, Missouri University of Science and Technology</li>
-                    <li>B.S. in Computer Engineering, Missouri University of Science and Technology</li>
-                    <li>Undergraduate research assisting in the creation of novel transformer technologies</li>
-                    <li>A Summer internship architecting systems to improve user-product interactions</li>
-                    <li>3 Years (As of May 2024) developing autopilots for commercial marine applications.</li>
-                </ul>
-
-                <p><em>This website is currently under development! What you see here is what I was able to throw
-                        together in a weekend or so. Hopefully I get a chance to clean it up soon.</em>
-                </p>
-            </div>
-        </div>
-
-        <footer id="footer">
-            <hr class="page_break" />
-            <div class="footer_bar">
-                <div class="footer_links">
-                    <a href="https://www.printables.com/@jevndev_1637559" class="footer_link link">
-                        <svg id="footer_link_icon_printables" class="footer_link_icon">
-                            <use xlink:href="printables.svg#printables_svg" />
-                        </svg>
-                    </a>
-                    <a href="https://github.com/jevndev" class="footer_link link">
-                        <svg id="footer_link_icon_github" class="footer_link_icon">
-                            <use xlink:href="github.svg#github_svg" />
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/jevndev/" class="footer_link link">
-                        <svg id="footer_link_icon_linkedin" class="footer_link_icon">
-                            <use xlink:href="linkedin.svg#linkedin_svg" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
-
+			<footer id="footer">
+				<hr class="page_break" />
+				<div class="footer_bar">
+					<div class="footer_links">
+						<a
+							href="https://www.printables.com/@jevndev_1637559"
+							class="footer_link link"
+						>
+							<svg
+								id="footer_link_icon_printables"
+								class="footer_link_icon"
+							>
+								<use
+									xlink:href="printables.svg#printables_svg"
+								/>
+							</svg>
+						</a>
+						<a
+							href="https://github.com/jevndev"
+							class="footer_link link"
+						>
+							<svg
+								id="footer_link_icon_github"
+								class="footer_link_icon"
+							>
+								<use xlink:href="github.svg#github_svg" />
+							</svg>
+						</a>
+						<a
+							href="https://www.linkedin.com/in/jevndev/"
+							class="footer_link link"
+						>
+							<svg
+								id="footer_link_icon_linkedin"
+								class="footer_link_icon"
+							>
+								<use xlink:href="linkedin.svg#linkedin_svg" />
+							</svg>
+						</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>

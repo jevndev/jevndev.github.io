@@ -1,76 +1,117 @@
 <html>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<title>Jonathan Evans</title>
+	</head>
 
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Jonathan Evans</title>
-</head>
+	<body>
+		<div class="topbar">
+			<div class="headshot_container">
+				<img
+					src="headshot.jpg"
+					alt="A headshot of Jonathan Evans"
+					class="headshot"
+				/>
+			</div>
 
-<body>
-    <div class="topbar">
-        <div class="headshot_container">
-            <img src="headshot.jpg" alt="A headshot of Jonathan Evans" class="headshot">
-        </div>
+			<div class="title_container">
+				<h1 class="page_title">Jonathan Evans</h1>
+				<h2 class="subtitle">Contact</h2>
+			</div>
 
-        <div class="title_container">
-            <h1 class="page_title">Jonathan Evans</h1>
-            <h2 class="subtitle">Contact</h2>
-        </div>
+			<nav class="navigation">
+				<a href="index.html" class="nav_link link">About</a>
+				<a href="#footer" class="nav_link link">Links</a>
+				<a
+					href="mailto:jonathanevansdev@gmail.com"
+					class="nav_link link"
+					>Contact</a
+				>
+				<a href="blog.html" class="nav_link link">Blog</a>
+			</nav>
+		</div>
+		<hr class="page_break" />
 
+		<div id="page_content">
+			<div id="contact_block">
+				<div id="about_block">
+					<div id="about_section" class="text_block">
+						<p>
+							If you would like to contact me, I generally respond
+							best to emails. You can reach me at
+							<a href="mailto:jonathanevansdev@gmail.com"
+								>jonathanevansdev@gmail.com</a
+							>
+						</p>
+						<p>
+							However I am also available for direct-message on
+							the following platforms:
+						</p>
+						<ul>
+							<li>
+								<a
+									href="https://www.printables.com/@jevndev_1637559"
+									>Printables</a
+								>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/in/jevndev/"
+									>LinkedIn</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
-        <nav class="navigation">
-            <a href="index.html" class="nav_link link">About</a>
-            <a href="#footer" class="nav_link link">Links</a>
-            <a href="mailto:jonathanevansdev@gmail.com" class="nav_link link">Contact</a>
-            <a href="blog.html" class="nav_link link">Blog</a>
-        </nav>
-
-    </div>
-    <hr class="page_break" />
-
-    <div id="page_content">
-        <div id="contact_block">
-            <div id="about_block">
-                <div id="about_section" class="text_block">
-                    <p>
-                        If you would like to contact me, I generally respond best to emails. You can reach me at <a
-                            href="mailto:jonathanevansdev@gmail.com">jonathanevansdev@gmail.com</a>
-                    </p>
-                    <p>However I am also available for direct-message on the following platforms:
-                    <ul>
-                        <li><a href="https://www.printables.com/@jevndev_1637559">Printables</a></li>
-                        <li><a href="https://www.linkedin.com/in/jevndev/">LinkedIn</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <footer id="footer">
-            <hr class="page_break" />
-            <div class="footer_bar">
-                <div class="footer_links">
-                    <a href="https://www.printables.com/@jevndev_1637559" class="footer_link link">
-                        <svg id="footer_link_icon_printables" class="footer_link_icon">
-                            <use xlink:href="printables.svg#printables_svg" />
-                        </svg>
-                    </a>
-                    <a href="https://github.com/jevndev" class="footer_link link">
-                        <svg id="footer_link_icon_github" class="footer_link_icon">
-                            <use xlink:href="github.svg#github_svg" />
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/jevndev/" class="footer_link link">
-                        <svg id="footer_link_icon_linkedin" class="footer_link_icon">
-                            <use xlink:href="linkedin.svg#linkedin_svg" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
-
+			<footer id="footer">
+				<hr class="page_break" />
+				<div class="footer_bar">
+					<div class="footer_links">
+						<a
+							href="https://www.printables.com/@jevndev_1637559"
+							class="footer_link link"
+						>
+							<svg
+								id="footer_link_icon_printables"
+								class="footer_link_icon"
+							>
+								<use
+									xlink:href="printables.svg#printables_svg"
+								/>
+							</svg>
+						</a>
+						<a
+							href="https://github.com/jevndev"
+							class="footer_link link"
+						>
+							<svg
+								id="footer_link_icon_github"
+								class="footer_link_icon"
+							>
+								<use xlink:href="github.svg#github_svg" />
+							</svg>
+						</a>
+						<a
+							href="https://www.linkedin.com/in/jevndev/"
+							class="footer_link link"
+						>
+							<svg
+								id="footer_link_icon_linkedin"
+								class="footer_link_icon"
+							>
+								<use xlink:href="linkedin.svg#linkedin_svg" />
+							</svg>
+						</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>

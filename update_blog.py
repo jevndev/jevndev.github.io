@@ -427,7 +427,7 @@ class RSSFeed:
 
 def update_rss(pages: typing.Sequence[BlogPostPage]):
     feed = RSSFeed(BLOG_TITLE, BLOG_LINK, BLOG_DESCRIPTION)
-    for page in pages:
+    for page in rich.progress.track(pages, "Updating RSS", show_speed=True):
         feed.add_blog_post(
             page,
         )

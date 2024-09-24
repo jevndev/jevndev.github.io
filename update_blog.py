@@ -134,6 +134,9 @@ class BlogPost:
                 PostBody("".join(file_parts.body_text)),
             )
 
+    def uuid(self) -> str:
+        return self.post_title + self.metadata.publish_date.strftime("%Y%m%d")
+
 
 def get_blog_posts(
     blog_post_folder: pathlib.Path,
@@ -269,7 +272,7 @@ class BlogPostPage:
 
     @property
     def uuid(self):
-        return uuid.uuid5(uuid.NAMESPACE_URL, str(self.page_path))
+        return uuid.uuid5(uuid.NAMESPACE_URL, self.source_data.uuid())
 
 
 def get_blog_post_url_relative_to(post: BlogPostPage, root: str) -> str:

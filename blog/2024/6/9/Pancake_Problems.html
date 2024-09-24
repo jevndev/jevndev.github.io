@@ -197,9 +197,9 @@
 							<li>
 								<p>
 									The "Target Stack" is simply the sorted
-									sequence of pancakes $$ \bar{S}_n={1, 2,
-									\ldots, n-1, n} $$
+									sequence of pancakes
 								</p>
+								<p>$$ \bar{S}_n={1, 2, \ldots, n-1, n} $$</p>
 							</li>
 							<li>
 								<p>
@@ -250,14 +250,16 @@
 							\forall s_i \in S_n}$$
 						</p>
 						<p>
-							$$f_{k,n}(f_{k,n}(s_i))=\begin{cases} s_i&amp;
+							$$ f_{k,n}(f_{k,n}(s_i))=\begin{cases} s_i&amp;
 							i&lt;k \\ s_{n-(n-i+k)+k} &amp; i\geq k \end{cases}
 							$$
 						</p>
 						<p>i.e.</p>
 						<p>
-							$$f_{k,n}(f_{k,n}(s_i))=\begin{cases} s_i&amp;
+							$$ f_{k,n}(f_{k,n}(s_i))=\begin{cases} s_i&amp;
 							i&lt;k \\ s_{i} &amp; i\geq k \end{cases} = s_i $$
+						</p>
+						<p>
 							What's neat about this conclusion is that it
 							illuminates a bit about what the solution sequence
 							looks like. The solution sequence cannot have any
@@ -273,13 +275,23 @@
 							flips (copied from above):
 						</p>
 						<p>
-							$$ \textbf{F}(S_n)=(F_{j_1}\circ F_{j_2} \circ
-							\ldots \circ F_{j_{m-1}} \circ F_{j_m})(S_n)$$ It
-							follows that $$ \textbf{F}(S_n) = [s_1, s_2, \ldots
-							, s_{k-1}]\ |\ R $$ where $k=\min_{j_{i}\ i &lt;
-							m}i$ , $|$ represents concatenation of sequences and
-							$R$ is some sequence of the elements of the elements
-							of $S_n$ not in the first sequence of the
+							$$ \textbf{F}(S
+							<em> n)=(F </em>
+							{j
+							<em> 1}\circ F </em>
+							{j
+							<em> 2} \circ \ldots \circ F </em>
+							{j
+							<em> {m-1}} \circ F </em>
+							{j
+							<em>
+								m})(S_n)$$ It follows that $$ \textbf{F}(S_n) =
+								[s_1, s_2, \ldots , s
+							</em>
+							{k-1}]\ |\ R $$ where $k=\min_{j_{i}\ i &lt; m}i$ ,
+							$|$ represents concatenation of sequences and $R$ is
+							some sequence of the elements of the elements of
+							$S_n$ not in the first sequence of the
 							concatenation. In clearer words, all elements below
 							the lowest flip in a given sequence are untouched.
 						</p>

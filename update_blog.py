@@ -9,6 +9,8 @@ import pathlib
 import shutil
 import typing
 import xml.etree.ElementTree
+import subprocess
+import sys
 
 import markdown
 import rich.progress
@@ -434,12 +436,27 @@ def update_rss(pages: typing.Sequence[BlogPostPage]):
         print(xml.etree.ElementTree.tostring(feed._feed).decode(), file=f)
 
 
+def format_blog_posts(
+    blog_post_pages: typing.Sequence[BlogPostPage], blog_list_page: pathlib.Path
+):
+    # run prettier on all the blog posts
+    args = [page.page_path for page in blog_post_pages] + [blog_list_page]
+    subprocess.run(
+        ["npx", "prettier", *args, "--write"],
+        stdout=sys.stdout,
+        stderr=sys.stderr,
+    )
+
+
 def main():
     blog_posts = get_blog_posts(BLOG_POST_DATA_FOLDER)
     blog_post_pages = generate_blog_post_pages(blog_posts, BLOG_POST_PAGE_FOLDER)
 
     update_blog_homepage(blog_post_pages, BLOG_LIST_PAGE)
     update_rss(blog_post_pages)
+
+    rich.print("Formatting blog posts")
+    format_blog_posts(blog_post_pages, BLOG_LIST_PAGE)
 
 
 if __name__ == "__main__":

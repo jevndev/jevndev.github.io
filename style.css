@@ -319,3 +319,21 @@ h3 a:hover {
 	height: 100%;
 	display: flex;
 }
+
+
+#rss_bar {
+	justify-content: center;
+	align-items: center;
+	height: 1em;
+	display: flex;
+}
+
+#rss_link
+{
+	color: var(--gunmetal);
+	text-decoration: none;
+}
+
+#rss_link:visited{
+	color:var(--gunmetal);
+}

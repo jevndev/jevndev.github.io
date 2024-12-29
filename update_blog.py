@@ -334,7 +334,11 @@ def overwrite_list_page_html(
     post_list_element.clear()
     add_post_break(post_list_element)
     for page in rich.progress.track(
-        pages, description="Updating Homepage", show_speed=True
+        sorted(
+            pages, key=lambda page: page.source_data.metadata.publish_date, reverse=True
+        ),
+        description="Updating Homepage",
+        show_speed=True,
     ):
         post_list_element.append(page.make_bs4_card_tag())
         add_post_break(post_list_element)

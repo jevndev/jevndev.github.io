@@ -3,6 +3,8 @@ from __future__ import annotations
 import dataclasses
 import datetime
 import io
+import argparse
+import re
 import uuid
 import itertools
 import pathlib
@@ -29,9 +31,10 @@ POST_LIST_ID = HTMLID("post_list")
 
 POST_HEADER_DELIMITER = "---\n"
 
+STATUS_KEY = "status"
 TAG_KEY = "tags"
 PUBLISH_DATE_KEY = "publish date"
-REQUIRED_KEYS = (TAG_KEY, PUBLISH_DATE_KEY)
+REQUIRED_KEYS = (TAG_KEY, PUBLISH_DATE_KEY, STATUS_KEY)
 
 POST_TITLE_ID = HTMLID("post_title")
 POST_SUBTITLE_ID = HTMLID("post_subtitle")
@@ -49,6 +52,8 @@ PostTitle = typing.NewType("PostTitle", str)
 PostSubtitle = typing.NewType("PostSubtitle", str)
 PostBody = typing.NewType("PostBody", str)
 PostTag = typing.NewType("PostTag", str)
+
+OBSIDIAN_IMAGE_LINK_PATTERN = re.compile(r"!\[\[(.*\.((jpg)|(png)))\]\]")
 
 
 def _string_iterable_to_stream(strings: typing.Iterable[str]) -> io.StringIO:
@@ -68,20 +73,23 @@ class PostMetadata:
     tags: typing.Sequence[PostTag]
     publish_date: datetime.datetime
     subtitle: typing.Optional[PostSubtitle]
+    is_ready_to_publish: bool
 
     @staticmethod
     def from_post_header_text(header_lines: typing.Iterable[str]) -> PostMetadata:
         header_data = _parse_as_yaml(header_lines)
-        assert _has_required_keys(header_data)
+        assert _has_required_keys(header_data), header_data
 
-        tags = [PostTag(tag) for tag in header_data[TAG_KEY]]
+        tag_strings = header_data[TAG_KEY] or []
+
+        tags = [PostTag(tag) for tag in tag_strings]
         publish_date = parser.parse(header_data[PUBLISH_DATE_KEY])
         if SUBTITLE_KEY in header_data:
             subtitle = PostSubtitle(header_data[SUBTITLE_KEY])
         else:
             subtitle = None
 
-        return PostMetadata(tags, publish_date, subtitle)
+        return PostMetadata(tags, publish_date, subtitle, True)
 
     def subtitle_or(self, /, default="") -> str:
         return self.subtitle if self.subtitle is not None else default
@@ -196,7 +204,12 @@ class BlogPostPage:
                 template_html, blog_post.metadata.subtitle, POST_SUBTITLE_ID
             )
 
-        blog_post_content = HTMLstr(markdown.markdown("".join(blog_post.body)))
+        body = OBSIDIAN_IMAGE_LINK_PATTERN.sub(
+            lambda match: f"![{match.group(1)}]({match.group(1)})",
+            blog_post.body,
+        )
+
+        blog_post_content = HTMLstr(markdown.markdown("".join(body)))
 
         BlogPostPage._set_post_content(
             template_html, blog_post_content, POST_CONTENT_ID
@@ -220,15 +233,31 @@ class BlogPostPage:
         blog_post: BlogPost,
         blog_post_root_folder: pathlib.Path,
         template_page_path: pathlib.Path,
+        blog_post_source_folder: pathlib.Path,
     ) -> BlogPostPage:
         with open(template_page_path, "r") as f:
             template_page = BeautifulSoup(f, "html.parser")
 
-        return BlogPostPage(
+        page_path = blog_post_root_folder / BlogPostPage._get_path(blog_post)
+
+        page = BlogPostPage(
             blog_post,
             BlogPostPage._make_html(blog_post, template_page),
-            blog_post_root_folder / BlogPostPage._get_path(blog_post),
+            page_path,
         )
+
+        page._ensure_path_exists()
+
+        page_folder_path = page_path.parent.absolute()
+
+        all_images = OBSIDIAN_IMAGE_LINK_PATTERN.findall(blog_post.body)
+
+        for image_name, *_ in all_images:
+            image_location = blog_post_source_folder / pathlib.Path(image_name)
+
+            shutil.copy(image_location, page_folder_path)
+
+        return page
 
     def _ensure_path_exists(self):
         for path in reversed(self.page_path.parents):
@@ -282,7 +311,9 @@ def get_blog_post_url_relative_to(post: BlogPostPage, root: str) -> str:
 
 
 def generate_blog_post_pages(
-    blog_posts: typing.Sequence[BlogPost], blog_post_root_folder: pathlib.Path
+    blog_posts: typing.Iterable[BlogPost],
+    blog_post_root_folder: pathlib.Path,
+    blog_post_source_folder: pathlib.Path,
 ) -> typing.Sequence[BlogPostPage]:
     pages: typing.List[BlogPostPage] = []
 
@@ -295,6 +326,7 @@ def generate_blog_post_pages(
             blog_post,
             blog_post_root_folder,
             BLOG_POST_TEMPLATE_PAGE,
+            blog_post_source_folder,
         )
         page.write_file()
         pages.append(page)
@@ -452,9 +484,27 @@ def format_blog_posts(
     )
 
 
+@dataclasses.dataclass
+class Configuration:
+    source_folder: pathlib.Path
+
+
+def get_configuration_from_args() -> Configuration:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("blog_post_source_folder", type=pathlib.Path)
+    args = parser.parse_args()
+
+    return Configuration(args.blog_post_source_folder)
+
+
 def main():
-    blog_posts = get_blog_posts(BLOG_POST_DATA_FOLDER)
-    blog_post_pages = generate_blog_post_pages(blog_posts, BLOG_POST_PAGE_FOLDER)
+    configuration = get_configuration_from_args()
+    blog_posts = get_blog_posts(configuration.source_folder)
+
+    # TODO: Support Incremental updates
+    blog_post_pages = generate_blog_post_pages(
+        blog_posts, BLOG_POST_PAGE_FOLDER, configuration.source_folder
+    )
 
     update_blog_homepage(blog_post_pages, BLOG_LIST_PAGE)
     update_rss(blog_post_pages)

@@ -84,20 +84,20 @@
 							<a
 								href="https://www.boardsource.xyz/products/lily58"
 							>
-								lily58</a
-							>
+								lily58
+							</a>
 							. I've wanted to make another keyboard for a while
 							after rocking two versions of the
 							<a
 								href="https://keeb.io/collections/iris-split-ergonomic-keyboard"
 							>
-								keebio iris</a
-							>
+								keebio iris
+							</a>
 							since about 2021. For this new one my main goal was
 							to make something fully wireless so I can achieve
 							the cable-free workstation of my dreams. I stuffed a
 							750mAh battery in it which is
-							<em> way</em>
+							<em> way </em>
 							overkill. It has barely depleted in the month or so
 							of using it at work.
 						</p>
@@ -109,10 +109,9 @@
 							happy with the results. Not sure what happened with
 							that layer line in the middle though.
 						</p>
-						<img
-							alt="Image of a white split ortholinear keyboard"
-							src="../../../../blog_posts/lily_shot.jpg"
-						/>
+						<p>
+							<img alt="lily_shot.jpg" src="lily_shot.jpg" />
+						</p>
 						<p>
 							I did take a quick detour with this case while
 							trying to play with the acoustics of it. The design
@@ -120,35 +119,36 @@
 							place to put the (rather large) battery and also
 							because I knew I would want to potentially put foam
 							or something down there to play with the sound.
+							<img
+								alt="lily case cutaway 1.png"
+								src="lily case cutaway 1.png"
+							/>
 						</p>
-						<img
-							alt="Cutaway image of the case"
-							src="../../../../blog_posts/lily case cutaway 1.png"
-						/>
 						<p>
 							I thought it would be fun to print a TPU pad. You
-							can see it here in blue below the PCB ![[lily case
-							cutaway 2.png]]
+							can see it here in blue below the PCB
+							<img
+								alt="lily case cutaway 2.png"
+								src="lily case cutaway 2.png"
+							/>
 						</p>
-						<img
-							alt="Cutaway image of the case with a TPU pad under the PCB"
-							src="../../../../blog_posts/lily case cutaway 2.png"
-						/>
 						<p>
 							Another view here where you can see the PCB
 							standoffs sticking up through it
 						</p>
-						<img
-							alt="Image of the TPU pad in the lily58 case"
-							src="../../../../blog_posts/lily case cutaway 3.png"
-						/>
+						<p>
+							<img
+								alt="lily case cutaway 3.png"
+								src="lily case cutaway 3.png"
+							/>
+						</p>
 						<p>
 							The part printed beautifully despite the TPU being
 							pretty old and having clearly taken on some
 							moisture. Interestingly it made the keys sound
-							<em> very</em>
+							<em> very </em>
 							poppy. I was going for more of a
-							<strong> thock</strong>
+							<strong> thock </strong>
 							and the empty chasm actually achieved that pretty
 							well. So I didn't end up keeping the pad in there.
 						</p>
@@ -168,7 +168,7 @@
 							Then suddenly, the 6 key broke. After one last
 							disassembly I realized what was happening. I
 							designed this case based on the
-							<em> left</em>
+							<em> left </em>
 							PCB only. I figured it was a safe assumption that
 							the right would just be mirrored. Frustratingly,
 							though the cutouts were correct for the left PCB,
@@ -184,10 +184,9 @@
 							surface mount package. Resulting in this
 							abomination:
 						</p>
-						<img
-							alt="The bottom of the lily58 PCB with two through-hole diodes soldered in place of the surface mount ones"
-							src="../../../../blog_posts/solder_job.jpg"
-						/>
+						<p>
+							<img alt="solder_job.jpg" src="solder_job.jpg" />
+						</p>
 						<p>
 							Fortunately no one (other than myself everyone who
 							reads this) has to know about it.
@@ -199,12 +198,12 @@
 							<a
 								href="https://cad.onshape.com/documents/30d45f15f4782f442e894449/w/9dd9f94adeff424d092fc261/e/cb818885fc3ee4c715c65c1c?renderMode=0&amp;uiState=676c807df7afcb57d045daf0"
 							>
-								on onshape</a
-							>
+								on onshape
+							</a>
 							, the firmware
 							<a href="https://github.com/jevndev/zmk-config">
-								on github</a
-							>
+								on github
+							</a>
 							and the exact board I sourced
 							<a
 								href="https://typeractive.xyz/products/lily58-partially-assembled-pcb"
@@ -220,13 +219,13 @@
 							<a
 								href="https://github.com/jevndev/bjarnes-game-of-life"
 							>
-								compile-time game of life implementation</a
-							>
+								compile-time game of life implementation
+							</a>
 							in C++ templates.
 						</p>
 						<p>
 							(warning, the repository is in a
-							<em> very</em>
+							<em> very </em>
 							sorry state at the time of writing)
 						</p>
 						<p>
@@ -234,11 +233,11 @@
 							pattern-matching-logical-paradigm-y design
 							philosophy of template meta-programming. Passing
 							around wrapper types or using
-							<code> constexpr</code>
+							<code> constexpr </code>
 							would have been much easier and wouldn't have been
 							susceptible to the biggest problem with what I
 							wrote. That is, querying the game board creates
-							<em> many</em>
+							<em> many </em>
 							template instantiations. So much so that even modest
 							size boards overrun clang's default template
 							instantiation limit. Cranking that limit up is a
@@ -248,7 +247,7 @@
 							optimizations I can do to reduce the number of
 							instantiations, but I could also just do the sane
 							thing and have a
-							<code> std::array</code>
+							<code> std::array </code>
 							that I pass around at compile time.
 						</p>
 						<h2>Testing</h2>
@@ -276,8 +275,8 @@
 							<a
 								href="https://github.com/jevndev/jevndev.github.io/tree/implement-rss"
 							>
-								shoved it in there</a
-							>
+								shoved it in there
+							</a>
 							.
 						</p>
 						<p>
@@ -293,13 +292,15 @@
 							online lobbies for various
 							<a
 								href="https://en.wikipedia.org/wiki/Source_(game_engine)"
-								>source engine</a
 							>
+								source engine
+							</a>
 							games. I saw that the protocol was
 							<a
 								href="https://developer.valvesoftware.com/wiki/Server_queries"
-								>documented online</a
 							>
+								documented online
+							</a>
 							so I figured it would be a quick weekend project. I
 							started out in a python script to nail down any
 							oddities of the protocol before moving to rust so I
@@ -307,10 +308,10 @@
 							never really made it past the python script. The
 							source server query protocol has a handful of
 							obnoxious oddities which make it one of the most...
-							<em> interesting</em>
+							<em> interesting </em>
 							... protocols I've ever seen. I want to write a full
 							post on it and what can be learned about how
-							<strong> not</strong>
+							<strong> not </strong>
 							to design a protocol. so I'll keep this brief here.
 						</p>
 						<h1>Looking to the future</h1>
